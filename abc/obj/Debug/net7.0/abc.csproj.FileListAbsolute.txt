@@ -1,0 +1,14 @@
+C:\Users\Pavel\Desktop\abc\bin\Debug\net7.0\abc.exe
+C:\Users\Pavel\Desktop\abc\bin\Debug\net7.0\abc.deps.json
+C:\Users\Pavel\Desktop\abc\bin\Debug\net7.0\abc.runtimeconfig.json
+C:\Users\Pavel\Desktop\abc\bin\Debug\net7.0\abc.dll
+C:\Users\Pavel\Desktop\abc\bin\Debug\net7.0\abc.pdb
+C:\Users\Pavel\Desktop\abc\obj\Debug\net7.0\abc.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Pavel\Desktop\abc\obj\Debug\net7.0\abc.AssemblyInfoInputs.cache
+C:\Users\Pavel\Desktop\abc\obj\Debug\net7.0\abc.AssemblyInfo.cs
+C:\Users\Pavel\Desktop\abc\obj\Debug\net7.0\abc.csproj.CoreCompileInputs.cache
+C:\Users\Pavel\Desktop\abc\obj\Debug\net7.0\abc.dll
+C:\Users\Pavel\Desktop\abc\obj\Debug\net7.0\refint\abc.dll
+C:\Users\Pavel\Desktop\abc\obj\Debug\net7.0\abc.pdb
+C:\Users\Pavel\Desktop\abc\obj\Debug\net7.0\abc.genruntimeconfig.cache
+C:\Users\Pavel\Desktop\abc\obj\Debug\net7.0\ref\abc.dll

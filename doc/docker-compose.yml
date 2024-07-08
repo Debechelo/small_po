@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: database_name
+      MYSQL_USER: username
+      MYSQL_PASSWORD: password
+    deploy:
+      replicas: 2
+
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    deploy:
+      replicas: 1

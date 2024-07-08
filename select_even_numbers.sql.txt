@@ -1,0 +1,17 @@
+DELIMITER $$
+
+CREATE PROCEDURE print_even_numbers()
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    
+    WHILE i <= 10 DO
+        IF i % 2 = 0 THEN
+            SELECT i;
+        END IF;
+        SET i = i + 1;
+    END WHILE;
+END$$
+
+DELIMITER ;
+
+CALL print_even_numbers();

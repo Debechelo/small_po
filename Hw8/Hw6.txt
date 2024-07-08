@@ -1,0 +1,59 @@
+sudo apt install nginx
+sudo systemctl start nginx
+
+sudo apt install apache2
+sudo systemctl start apache2
+
+cd /etc/apache2
+sudo nano ports.conf     // Меняю порт на 9000
+sudo nano sites-available/000-default.conf // и здесь
+
+sudo systemctl reload apache2
+sudo systemctl restart nginx
+
+cd /etc/nginx
+sudo nano sites-available/default
+
+// Меняю
+#
+location / {
+    proxy_pass http://localhost:80;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+#
+
+sudo systemctl reload nginx
+
+sudo apt install libapache2-mod-php php -y
+
+cd /var/www/html
+sudo nano info.php
+<?php
+	phpinfo();
+?>
+sudo systemctl reload nginx
+
+sudo apt install php-fpm -y
+
+
+
+sudo apt install mysql-server
+sudo systemctl start mysql
+sudo mysql -u root -p
+
+CREATE DATABASE mydatabase;
+USE mydatabase;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    email VARCHAR(100)
+);
+
+
+sudo apt install phpmyadmin
+sudo systemctl restart apache2
+
+

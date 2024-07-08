@@ -1,0 +1,37 @@
+mkdir ~/students
+mkdir ~/mentors
+touch ~/students/students_list.txt
+touch ~/mentors/mentors_list.txt
+
+nano ~/students/students_list.txt
+nano ~/mentors/mentors_list.txt
+
+mv ~/mentors/mentors_list.txt ~/students/
+rm -r ~/mentors
+
+mv ~/students ~/students_and_mentors
+rm -r ~/students_and_mentors
+
+
+echo "sdfgsdfgsdf" > ~/file1
+cp ~/file1 ~/file2
+ln -s ~/file1 ~/file3
+ln ~/file1 ~/file4
+ls -i ~/file*
+rm ~/file1
+cat ~/file2
+cat ~/file3
+cat ~/file4
+
+file2 останется незатронутым
+ссылка file3 будет битой
+Жёсткая ссылка file4 останется действительной,
+так как жёсткие ссылки обеспечивают доступ
+к данным независимо от имени файла.
+
+mv ~/file2 ~/new_file1
+mv ~/file3 ~/new_file2
+mv ~/file4 ~/new_file3
+ln -s ~/new_file1 ~/new_link
+mkdir ~/new_directory
+mv ~/new_file1 ~/new_file2 ~/new_file3 ~/new_link ~/new_directory/

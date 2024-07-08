@@ -1,0 +1,88 @@
+sudo apt install docker.io -y
+
+docker run -it ubuntu
+
+nano Dockerfile
+
+#
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y nginx php-fpm
+
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY default /etc/nginx/sites-available/default
+
+EXPOSE 80 443
+
+CMD ["nginx", "-g", "daemon off;"]
+#
+
+nano nginx.conf
+
+#
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+
+events {
+    worker_connections 768;
+    # multi_accept on;
+}
+
+http {
+    ##
+    # Basic Settings
+    ##
+
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+    types_hash_max_size 2048;
+
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    ##
+    # Logging Settings
+    ##
+
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+
+    ##
+    # Gzip Settings
+    ##
+
+    gzip on;
+    gzip_disable "msie6";
+
+    # Virtual Host Configs
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+#
+
+
+nano default 
+
+#
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    index index.php index.html index.htm index.nginx-debian.html;
+    server_name _;
+    location / {
+        try_files $uri $uri/ =404;
+    }
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+#
+
+docker build -t nginx-php .
+docker run -d -p 8080:80 nginx-php

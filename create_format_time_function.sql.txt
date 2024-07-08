@@ -1,0 +1,23 @@
+DELIMITER $$
+
+CREATE FUNCTION format_seconds(input_seconds INT)
+RETURNS VARCHAR(100)
+BEGIN
+    DECLARE days INT;
+    DECLARE hours INT;
+    DECLARE minutes INT;
+    DECLARE seconds INT;
+    DECLARE result VARCHAR(100);
+
+    SET days = FLOOR(input_seconds / 86400);
+    SET hours = FLOOR((input_seconds % 86400) / 3600);
+    SET minutes = FLOOR((input_seconds % 3600) / 60);
+    SET seconds = input_seconds % 60;
+
+    SET result = CONCAT(days, ' days ', hours, ' hours ', minutes, ' minutes ', seconds, ' seconds');
+    RETURN result;
+END$$
+
+DELIMITER ;
+
+SELECT format_seconds(123456) AS formatted_time;
